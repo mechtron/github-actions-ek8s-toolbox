@@ -1,0 +1,24 @@
+name: github-actions-ek8s-toolbox
+
+on: [push]
+
+jobs:
+  github-actions-ek8s-toolbox:
+    runs-on: ubuntu-latest
+    name: github-actions-ek8s-toolbox
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - uses: ./ # Uses an action in the root directory
+      - name: github-actions-ek8s-toolbox step
+        id: github-actions-ek8s-toolbox
+        uses: pdemagny/github-actions-ek8s-toolbox@master
+        with:
+          eksClusterName: "example"
+          helmVersion: "2.15.1"
+          awsAccessKeyId: "AKIA3EXAMPLEY3X4MPLE"
+          awsSecretAccessKey: "3X4MPLEiHm3X4MPLEXWev3X4MPLEp1UmE3X4MPLE"
+          awsDefaultRegion: "eu-west-1"
+          command: |
+            echo "Linting charts ..."
+            helm lint charts/

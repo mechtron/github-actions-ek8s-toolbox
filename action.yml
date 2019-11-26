@@ -1,0 +1,37 @@
+name: "github-actions-ek8s-toolbox"
+description: "Github Action to deploy helm charts to AWS EKS"
+author: "Pierre DEMAGNY"
+branding:
+  icon: "terminal"
+  color: "blue"
+inputs:
+  command:
+    description: "The helm command to run"
+    required: true
+  eksClusterName:
+    description: "Name of the EKS cluster you want to deploy to"
+    required: true
+  helmVersion:
+    description: "helm version to install, for example 2.12.1"
+    required: false
+    default: "2.16.1"
+  awsAccessKeyId:
+    description: "Your AWS access key id to get cluster context"
+    required: true
+  awsSecretAccessKey:
+    description: "Your AWS Secret access key to get cluster context"
+    required: true
+  awsDefaultRegion:
+    description: "Your AWS region to get cluster context"
+    required: false
+    default: "eu-west-1"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.command }}
+    - ${{ inputs.eksClusterName }}
+    - ${{ inputs.helmVersion }}
+    - ${{ inputs.awsAccessKeyId }}
+    - ${{ inputs.awsSecretAccessKey }}
+    - ${{ inputs.awsDefaultRegion }}
