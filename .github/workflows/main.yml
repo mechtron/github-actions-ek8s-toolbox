@@ -9,16 +9,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - uses: ./ # Uses an action in the root directory
       - name: github-actions-ek8s-toolbox step
         id: github-actions-ek8s-toolbox
         uses: pdemagny/github-actions-ek8s-toolbox@master
         with:
-          eksClusterName: "example"
-          helmVersion: "2.15.1"
+          eksClusterName: "example-cluster"
           awsAccessKeyId: "AKIA3EXAMPLEY3X4MPLE"
           awsSecretAccessKey: "3X4MPLEiHm3X4MPLEXWev3X4MPLEp1UmE3X4MPLE"
           awsDefaultRegion: "eu-west-1"
+          helmVersion: "2.12.1"
+          kubectlVersion: "1.13.9"
+          istioctlVersion: "1.1.3"
+          kubevalVersion: "0.14.0"
           command: |
-            echo "Linting charts ..."
-            helm lint charts/
+            echo "Just a test ..."
+            aws --version
+            helm version
+            kubectl version
+            istioctl version
+            kubeval --version

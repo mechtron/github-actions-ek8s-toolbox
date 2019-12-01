@@ -1,50 +1,64 @@
 # github-actions-ek8s-toolbox
 
-This action sets up awscli & helm so you can deploy to EKS easily.
+This Github Action allows you to work with helm charts & AWS EKS with ease.
 
 ## Inputs
 
-### `command`
+- `command`  
+  The command(s) to run.  
+  **Required**
 
-The helm command to run  
-**Required**
+- `eksClusterName`  
+  Name of the EKS cluster operate on.  
+  **Required**
 
-### `eksClusterName`
+- `awsAccessKeyId`  
+  Your AWS access key id to get the cluster context.  
+  **Required**
 
-Name of the EKS cluster you want to deploy to  
-**Required**
+- `awsSecretAccessKey`  
+  Your AWS Secret access key to get the cluster context.  
+  **Required**
 
-### `helmVersion`
+- `awsDefaultRegion`  
+  Your AWS region to get the cluster context.  
+  default: "eu-west-1"
 
-helm version to install, for example 2.12.1  
-default: "2.16.1"
+- `helmVersion`  
+  helm version to install.  
+  default: "2.12.1"
 
-### `awsAccessKeyId`
+- `kubectlVersion`  
+  kubectl version to install.  
+  default: "1.13.9"
 
-Your AWS access key id to get cluster context  
-**Required**
+- `istioctlVersion`  
+  istioctl version to install.  
+  default: "1.1.3"
 
-### `awsSecretAccessKey`
-
-Your AWS Secret access key to get cluster context  
-**Required**
-
-### `awsDefaultRegion`
-
-Your AWS region to get cluster context  
-default: "eu-west-1"
+- `kubevalVersion`  
+  kubeval version to install.  
+  default: "0.14.0"
 
 ## Usage
 
 ```yaml
-uses: actions/github-actions-ek8s-toolbox@v1
-with:
-  eksClusterName: 'example'
-  helmVersion: '2.15.1'
-  awsAccessKeyId: 'AKIA3EXAMPLEY3X4MPLE'
-  awsSecretAccessKey: '3X4MPLEiHm3X4MPLEXWev3X4MPLEp1UmE3X4MPLE'
-  awsDefaultRegion: 'eu-west-1'
-  command: |
-    echo "Linting charts ..."
-    helm lint charts/
+- name: github-actions-ek8s-toolbox step
+  uses: actions/github-actions-ek8s-toolbox@v1
+  with:
+    eksClusterName: 'example-cluster'
+    awsAccessKeyId: 'AKIA3EXAMPLEY3X4MPLE'
+    awsSecretAccessKey: '3X4MPLEiHm3X4MPLEXWev3X4MPLEp1UmE3X4MPLE'
+    awsDefaultRegion: 'eu-west-1'
+    helmVersion: '2.12.1'
+    kubectlVersion: '1.13.9'
+    istioctlVersion: '1.1.3'
+    kubevalVersion: '0.14.0'
+    command: |
+      echo "Just a test ..."
+      aws --version
+      helm version
+      kubectl version
+      istioctl version
+      kubeval --version
 ```
