@@ -28,6 +28,10 @@ This Github Action allows you to work with helm charts & AWS EKS with ease.
   helm version to install.  
   default: "2.12.1"
 
+- `helmfileVersion`  
+  helmfile version to install.  
+  default: "0.102.0"
+
 - `kubectlVersion`  
   kubectl version to install.  
   default: "1.13.9"
@@ -51,6 +55,7 @@ This Github Action allows you to work with helm charts & AWS EKS with ease.
     awsSecretAccessKey: '3X4MPLEiHm3X4MPLEXWev3X4MPLEp1UmE3X4MPLE'
     awsDefaultRegion: 'eu-west-1'
     helmVersion: '2.12.1'
+    helmVersion: '0.102.0'
     kubectlVersion: '1.13.9'
     istioctlVersion: '1.1.3'
     kubevalVersion: '0.14.0'
@@ -58,6 +63,7 @@ This Github Action allows you to work with helm charts & AWS EKS with ease.
       echo "Just a test ..."
       aws --version
       helm version
+      helmfile --version
       kubectl version
       istioctl version
       kubeval --version

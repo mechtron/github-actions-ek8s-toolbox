@@ -25,6 +25,10 @@ inputs:
     description: "helm version to install."
     required: false
     default: "2.12.1"
+  helmfileVersion:
+    description: "helmfile version to install."
+    required: false
+    default: "0.102.0"
   kubectlVersion:
     description: "kubectl version to install."
     required: false
@@ -39,7 +43,7 @@ inputs:
     default: "0.14.0"
 runs:
   using: "docker"
-  image: "docker://pdemagny/github-actions-ek8s-toolbox:v1"
+  image: "docker://pdemagny/github-actions-ek8s-toolbox:v1.1"
   args:
     - ${{ inputs.command }}
     - ${{ inputs.eksClusterName }}
@@ -47,6 +51,7 @@ runs:
     - ${{ inputs.awsSecretAccessKey }}
     - ${{ inputs.awsDefaultRegion }}
     - ${{ inputs.helmVersion }}
+    - ${{ inputs.helmfileVersion }}
     - ${{ inputs.kubectlVersion }}
     - ${{ inputs.istioctlVersion }}
     - ${{ inputs.kubevalVersion }}

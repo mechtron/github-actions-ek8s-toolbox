@@ -4,6 +4,7 @@ set -o pipefail
 
 HOME="/root"
 if [[ -z "${HELM_VERSION}" ]]; then HELM_VERSION="${INPUT_HELMVERSION}"; fi
+if [[ -z "${HELMFILE_VERSION}" ]]; then HELMFILE_VERSION="${INPUT_HELMFILEVERSION}"; fi
 if [[ -z "${ISTIOCTL_VERSION}" ]]; then ISTIOCTL_VERSION="${INPUT_ISTIOCTLVERSION}"; fi
 if [[ -z "${KUBEVAL_VERSION}" ]]; then KUBEVAL_VERSION="${INPUT_KUBEVALVERSION}"; fi
 if [[ -z "${KUBECTL_VERSION}" ]]; then KUBECTL_VERSION="${INPUT_KUBECTLVERSION}"; fi
@@ -20,6 +21,10 @@ wget -qO helm-v${HELM_VERSION}-linux-amd64.tar.gz https://get.helm.sh/helm-v${HE
     rm -Rf linux-amd64/ helm-v${HELM_VERSION}-linux-amd64.tar.gz
 helm init --client-only 1>/dev/null 2>&1
 helm plugin install https://github.com/databus23/helm-diff --version master 1>/dev/null 2>&1
+
+wget -qO helmfile https://github.com/roboll/helmfile/releases/download/v${HELMFILE_VERSION}/helmfile_linux_amd64 &&
+    mv helmfile /usr/local/bin/helmfile &&
+    chmod +x /usr/local/bin/helmfile
 
 wget -qO istio-${ISTIOCTL_VERSION}-linux.tar.gz https://github.com/istio/istio/releases/download/${ISTIOCTL_VERSION}/istio-${ISTIOCTL_VERSION}-linux.tar.gz &&
     tar xzf istio-${ISTIOCTL_VERSION}-linux.tar.gz &&
