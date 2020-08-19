@@ -22,7 +22,7 @@ This Github Action allows you to work with helm charts & AWS EKS with ease.
 
 - `awsDefaultRegion`  
   Your AWS region to get the cluster context.  
-  default: "eu-west-1"
+  default: "us-east-1"
 
 - `helmVersion`  
   helm version to install.  
@@ -48,12 +48,12 @@ This Github Action allows you to work with helm charts & AWS EKS with ease.
 
 ```yaml
 - name: github-actions-ek8s-toolbox step
-  uses: actions/github-actions-ek8s-toolbox@v1
+  uses: mechtron/github-actions-ek8s-toolbox@v1
   with:
     eksClusterName: 'example-cluster'
     awsAccessKeyId: 'AKIA3EXAMPLEY3X4MPLE'
     awsSecretAccessKey: '3X4MPLEiHm3X4MPLEXWev3X4MPLEp1UmE3X4MPLE'
-    awsDefaultRegion: 'eu-west-1'
+    awsDefaultRegion: 'us-east-1'
     helmVersion: '2.12.1'
     helmVersion: '0.102.0'
     kubectlVersion: '1.13.9'

@@ -20,7 +20,7 @@ inputs:
   awsDefaultRegion:
     description: "Your AWS region to get the cluster context."
     required: false
-    default: "eu-west-1"
+    default: "us-east-1"
   helmVersion:
     description: "helm version to install."
     required: false
@@ -43,7 +43,7 @@ inputs:
     default: "0.14.0"
 runs:
   using: "docker"
-  image: "docker://pdemagny/github-actions-ek8s-toolbox:v1.1"
+  image: "docker://mechtron/github-actions-ek8s-toolbox:v1.1"
   args:
     - ${{ inputs.command }}
     - ${{ inputs.eksClusterName }}

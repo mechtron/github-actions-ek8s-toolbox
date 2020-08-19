@@ -11,12 +11,12 @@ jobs:
         uses: actions/checkout@v1
       - name: github-actions-ek8s-toolbox step
         id: github-actions-ek8s-toolbox
-        uses: pdemagny/github-actions-ek8s-toolbox@master
+        uses: mechtron/github-actions-ek8s-toolbox@master
         with:
           eksClusterName: "example-cluster"
-          awsAccessKeyId: "AKIA3EXAMPLEY3X4MPLE"
-          awsSecretAccessKey: "3X4MPLEiHm3X4MPLEXWev3X4MPLEp1UmE3X4MPLE"
-          awsDefaultRegion: "eu-west-1"
+          awsAccessKeyId: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          awsSecretAccessKey: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          awsDefaultRegion: "us-east-1"
           helmVersion: "2.12.1"
           kubectlVersion: "1.13.9"
           istioctlVersion: "1.1.3"
