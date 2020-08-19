@@ -48,7 +48,7 @@ This Github Action allows you to work with helm charts & AWS EKS with ease.
 
 ```yaml
 - name: github-actions-ek8s-toolbox step
-  uses: mechtron/github-actions-ek8s-toolbox@v1
+  uses: mechtron/github-actions-ek8s-toolbox@2.0.0
   with:
     eksClusterName: 'example-cluster'
     awsAccessKeyId: 'AKIA3EXAMPLEY3X4MPLE'
