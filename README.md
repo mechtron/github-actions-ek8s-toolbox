@@ -54,11 +54,11 @@ This Github Action allows you to work with helm charts & AWS EKS with ease.
     awsAccessKeyId: 'AKIA3EXAMPLEY3X4MPLE'
     awsSecretAccessKey: '3X4MPLEiHm3X4MPLEXWev3X4MPLEp1UmE3X4MPLE'
     awsDefaultRegion: 'us-east-1'
-    helmVersion: '2.12.1'
-    helmVersion: '0.102.0'
-    kubectlVersion: '1.13.9'
-    istioctlVersion: '1.1.3'
-    kubevalVersion: '0.14.0'
+    helmVersion: '3.3.0'
+    helmfileVersion: '0.125.7'
+    kubectlVersion: '1.18.8'
+    istioctlVersion: '1.5.9'
+    kubevalVersion: '0.15.0'
     command: |
       echo "Just a test ..."
       aws --version

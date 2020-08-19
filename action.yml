@@ -24,26 +24,26 @@ inputs:
   helmVersion:
     description: "helm version to install."
     required: false
-    default: "2.12.1"
+    default: "3.3.0"
   helmfileVersion:
     description: "helmfile version to install."
     required: false
-    default: "0.102.0"
+    default: "0.125.7"
   kubectlVersion:
     description: "kubectl version to install."
     required: false
-    default: "1.13.9"
+    default: "1.18.8"
   istioctlVersion:
     description: "istioctl version to install."
     required: false
-    default: "1.1.3"
+    default: "1.5.9"
   kubevalVersion:
     description: "kubeval version to install."
     required: false
-    default: "0.14.0"
+    default: "0.15.0"
 runs:
   using: "docker"
-  image: "docker://mechtron/github-actions-ek8s-toolbox:v1.0.1"
+  image: "docker://mechtron/github-actions-ek8s-toolbox:latest"
   args:
     - ${{ inputs.command }}
     - ${{ inputs.eksClusterName }}
