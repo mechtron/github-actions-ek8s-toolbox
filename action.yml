@@ -43,7 +43,7 @@ inputs:
     default: "0.15.0"
 runs:
   using: "docker"
-  image: "docker://mechtron/github-actions-ek8s-toolbox:2.0.0"
+  image: "docker://mechtron/github-actions-ek8s-toolbox:2.1.0"
   args:
     - ${{ inputs.command }}
     - ${{ inputs.eksClusterName }}
